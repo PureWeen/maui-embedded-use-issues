@@ -1,6 +1,6 @@
 ﻿namespace Nau.Simple.Maui.Core
 {
-	// <summary>
+	/// <summary>
 	/// Provides a means to persist and access the cross platform context created when the application launches from anywhere within the native application.
 	/// </summary>
 	/// <remarks>
