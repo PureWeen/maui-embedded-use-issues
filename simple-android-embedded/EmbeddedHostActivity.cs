@@ -77,7 +77,15 @@ public class EmbeddedHostActivity : Activity
 			mauiContext = CrossPlatformContextProvider.GetCrossPlatformContext();
 		}
 
-		return new ScopedFragment(pageInContext, mauiContext);
+		// Setting the parent allows us access to the application level resource dictionary.
+		pageInContext.Parent = Microsoft.Maui.Controls.Application.Current;
+
+		Fragment renderedFragment = new ScopedFragment(pageInContext, mauiContext);
+
+		// Important to prevent memory leak per the Microsoft documentation.
+		pageInContext.Parent = null;
+
+		return renderedFragment;
 	}
 
 	private IMauiContext RecreateMauiContext(Bundle savedInstanceState)
