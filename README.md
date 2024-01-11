@@ -36,7 +36,7 @@ Running this will allow one to test the different issues we've encountered on An
 
 In general, one can use this to try and repro:
 * Illustrating that the Appearing\Disappearing events do not fire when using MAUI embedded nor do the display alerts and action sheets work when using MAUI embedded for both Android and iOS.
-* Illustrate trying to display an image using a glyph from a font icon file does not work in Android if trying to use the MAUI Context instance that was created when the application first loads if the initial Activity has been Finished (such as when going from a Login activity to a secured content activity.
+* Illustrate trying to display an image using a glyph from a font icon file does not work in Android if trying to use the MAUI Context instance that was created when the application first loads if the initial Activity has been Finished (such as when going from a Login activity to a secured content activity).
 * Illustrate a grouped list runs OK in Android if Android is within the single project structure.
 * Illustrate the font icon and grouped list are not issues in iOS and run OK.
 
