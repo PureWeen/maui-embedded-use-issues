@@ -83,7 +83,13 @@ namespace ButtonEventDemo
 
 		private void NavigateToPage(ContentPage pageInContext)
 		{
+			// Setting the parent allows us access to the application level resource dictionary and ensures the iOS bug due to missing parent is not encountered.
+			pageInContext.Parent = Application.Current;
+
 			var renderedController = pageInContext.ToUIViewController(AppDelegate._mauiContext);
+
+			// Important to prevent memory leak per the Microsoft documentation (presume this still applies for MAUI).
+			pageInContext.Parent = null;
 
 			renderedController.ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
 			PresentViewController(renderedController, true, null);

@@ -70,6 +70,15 @@ namespace Nau.Simple.Maui.Embedded
 
 			var mauiContext = new MauiContext(mauiApp.Services, this);
 
+			// Create an instance of the Cross Platform Framework application for consumption by the Pages in order to access global resource dictionaries.
+			Microsoft.Maui.Controls.Application.Current = new Microsoft.Maui.Controls.Application()
+			{
+				// Note: this is for illustration purposes. In our actual app we have a class that extends ResourceDictionary that we set for Resource here.
+				//		later in the initialization code we would add our various themes\style resource dictionaries to this so they are loaded and accessible to all pages.
+
+				////Resources = new OurCustomAppDictionary()
+			};
+
 			CrossPlatformContextProvider.Initialize(mauiContext);
 		}
 
