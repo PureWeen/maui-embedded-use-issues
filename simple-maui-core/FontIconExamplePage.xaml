@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="Nau.Simple.Maui.Core.FontIconExamplePage"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:controls="clr-namespace:Nau.Simple.Maui.Core.Controls"
+	Title="FontIconExamplePage">
+	<VerticalStackLayout>
+
+		<Label Text="Example Page for Font Icon Display Issue" />
+
+		<HorizontalStackLayout>
+			<controls:FontIconImage ImageIcon="{Binding ImageIcon}" />
+			<Label Text="Icon should be displayed to the left" />
+		</HorizontalStackLayout>
+
+	</VerticalStackLayout>
+</ContentPage>
