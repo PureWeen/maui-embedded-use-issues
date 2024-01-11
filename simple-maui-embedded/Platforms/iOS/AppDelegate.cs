@@ -46,8 +46,8 @@ namespace Nau.Simple.Maui.Embedded
 			var mauiApp = MauiProgram.CreateMauiApp((builder) =>
 			{
 				builder.Services.Add(new ServiceDescriptor(typeof(UIWindow), Window));
+				builder.ConfigureFonts(fonts => { fonts.AddFont("MaterialDesignIconsDesktop.ttf", "MaterialDesignIconsDesktop"); });
 			});
-
 
 			var mauiContext = new MauiContext(mauiApp.Services);
 

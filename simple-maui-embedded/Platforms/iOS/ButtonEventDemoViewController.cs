@@ -61,9 +61,29 @@ namespace ButtonEventDemo
 
 		private void PromptForDemoAction()
 		{
-			MainPage contentPage = new MainPage(new MainPageViewModel());
 
-			var renderedController = contentPage.ToUIViewController(AppDelegate._mauiContext);
+			UIAlertController alertController = UIAlertController.Create("Select Test", "Select which action to demo", UIAlertControllerStyle.ActionSheet);
+			alertController.AddAction(UIAlertAction.Create("Basic (OnAppearing, Display Alerts)", UIAlertActionStyle.Default, (action) => NavigateToPage(new MainPage(new MainPageViewModel()))));
+			alertController.AddAction(UIAlertAction.Create("Font Icon (Works)", UIAlertActionStyle.Default, (action) => NavigateToPage(new FontIconExamplePage(new FontIconExamplePageViewModel()))));
+			alertController.AddAction(UIAlertAction.Create("Grouped List (Works)", UIAlertActionStyle.Default, (action) => NavigateToPage(new ListPage(new CountyListPageViewModel()))));
+
+			if (DeviceInfo.Idiom != DeviceIdiom.Phone)
+			{
+				UIPopoverPresentationController presentationPopover = alertController.PopoverPresentationController;
+				if (presentationPopover != null)
+				{
+					presentationPopover.PermittedArrowDirections = 0; // No arrow 
+					presentationPopover.SourceView = View;
+					presentationPopover.SourceRect = View.Bounds;
+				}
+			}
+
+			PresentViewController(alertController, true, null);
+		}
+
+		private void NavigateToPage(ContentPage pageInContext)
+		{
+			var renderedController = pageInContext.ToUIViewController(AppDelegate._mauiContext);
 
 			renderedController.ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
 			PresentViewController(renderedController, true, null);

@@ -12,7 +12,8 @@
 	<Image.Source>
 		<FontImageSource x:Name="ConfiguredIconImageSource"
 			BindingContext="{x:Reference this}"
-			FontFamily="fonts/MaterialDesignIconsDesktop.ttf#MaterialDesignIconsDesktop"
+			FontFamily="{OnPlatform Android='fonts/MaterialDesignIconsDesktop.ttf#MaterialDesignIconsDesktop',
+			                        iOS='MaterialDesignIconsDesktop'}"
 			Glyph="{Binding ImageIcon.Glyph}"
 			Color="{Binding ImageIcon.Color}" />
 	</Image.Source>
