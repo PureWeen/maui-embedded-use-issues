@@ -1,6 +1,7 @@
 ## Table of Contents
 
 * [Overview](#overview)
+* [Disclaimer](#disclaimer)
 * [Simple MAUI First App](#simple-maui-first-app)
 * [Simple MAUI Embedded](#simple-maui-embedded)
 * [Simple Android Embedded](#simple-android-embedded)
@@ -23,6 +24,16 @@ While attempting to migrate to MAUI and .NET 7, our structure remains the same:
 * Our separate project for iOS has been updated to .NET7 iOS and has a dependency on the shared MAUI project.
 
 We do not and cannot at this time use the single project approach where the Android and iOS specific code all resides in one project under Platforms.
+
+## Disclaimer ##
+
+All of the code in this repo is VERY much quick trash to simply provide quick code examples that reproduce the various MAUI bugs we're encountering so we can file bugs.
+Some of the examples use view models along with the pages, others simply bind to the page code behind. In some cases we've copied over relevant portions of our production code in whole or in part
+to set up any framework level stuff (navigation, initializations, etc.) but it is no means complete or necessarily clean. I have not bothered with XML Doc either.
+
+None of this is meant to reflect actual production ready code nor illustrate proper use\patterns\etc. As such, the contents of this repo should not be considered a reflection of how I actually write code! I'd never in a million years put this junk into production!
+
+With that out of the way, carry on...
 
 ## Simple MAUI First App
 
