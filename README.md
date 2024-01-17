@@ -64,7 +64,7 @@ This supports the same actions as 'simple-maui-embedded' but will show that tryi
 The `simple-maui-staticresource-fail` directory contains the solution for running a native .NET Android or .NET iOS application with embedded MAUI to illustrate some of the odd and sporadic issues that crash the app when
 trying to access a StaticResource in a global merged resource dictionary.
 
-This app is the single project structure for simplicity, but our actual production application is comprised of individual .NET Android and .NET iOS projects refernencing a shared MAUI library and we see the same issues there. 
+This app is the single project structure for simplicity, but our actual production application is comprised of individual .NET Android and .NET iOS projects referencing a shared MAUI library and we see the same issues there. 
 
 The issues only appear to impact iOS. Android is included simply to illustrate it runs with no issues.
 
@@ -76,7 +76,7 @@ There are two issues we've encountered that this repros:
 
 ## Simple MAUI Core
 
-The `simple-maui-core` directory contains just a simple project to house all the MAUI pages, view models, etc. so they could be shared between the single project embedded example and the sepatate .NET Android example.
+The `simple-maui-core` directory contains just a simple project to house all the MAUI pages, view models, etc. so they could be shared between the single project embedded example and the separate .NET Android example.
 This is in line with our real world use of a shared project for the MAUI code to be referenced by the individual Android and iOS projects.
 
 
