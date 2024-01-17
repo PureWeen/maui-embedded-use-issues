@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:ContentPageBase
+	x:Class="Nau.Simple.Maui.Staticresource.Fail.WithListPage"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:base="clr-namespace:Nau.Simple.Maui.Staticresource.Fail"
+	Title="WithListPage">
+
+	<ContentPage.Resources>
+		<ResourceDictionary>
+
+			<Style
+				x:Key="LocalPageLableStyle"
+				BasedOn="{StaticResource LabelBaseStyle}"
+				TargetType="Label">
+				<Setter Property="TextColor" Value="Green" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+
+	<VerticalStackLayout>
+		<Label Style="{StaticResource SectionHeaderLabelStyle}" Text="Label outside List" />
+
+		<Label Margin="10" Text="Tap to go back">
+			<Label.GestureRecognizers>
+				<TapGestureRecognizer Command="{Binding GoBack}" />
+			</Label.GestureRecognizers>
+		</Label>
+
+
+		<ListView ItemsSource="{Binding SimpleList}">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout>
+							<Label Style="{StaticResource LocalPageLableStyle}" Text="{Binding .}" />
+							<Label Style="{StaticResource SectionHeaderLabelStyle}" Text="This will fail" />
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+
+	</VerticalStackLayout>
+</base:ContentPageBase>
