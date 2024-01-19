@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:ContentPageBase
+	x:Class="Nau.Simple.Maui.BindingIssue.WithListPage"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:base="clr-namespace:Nau.Simple.Maui.BindingIssue"
+	Title="WithListPage">
+
+	<VerticalStackLayout>
+		<Label Text="Should have bound list of content below - will not show first time with control template applied to content pages." />
+
+		<Label Text="Tap to go back" >
+			<Label.GestureRecognizers>
+				<TapGestureRecognizer Command="{Binding GoBack}" />
+			</Label.GestureRecognizers>
+		</Label>
+		
+		<ListView ItemsSource="{Binding SimpleList}">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout>
+							<Label Style="{StaticResource SubDetailLabelStyle}" Text="{Binding .}" />
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+
+	</VerticalStackLayout>
+</base:ContentPageBase>

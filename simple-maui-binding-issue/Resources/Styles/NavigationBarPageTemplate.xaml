@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+	This is the resource dictionary providing the control template to include a custom navigation bar control
+	above the content for each page.
+-->
+<ResourceDictionary
+	x:Class="Nau.Simple.Maui.BindingIssue.Resources.Templates.NavigationBarPageTemplate"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+	<!-- Template for configuring a page that contains a custom navigation bar followed by content. -->
+	<ControlTemplate x:Key="NavigationBarAndContentPageTemplate">
+
+		<Grid
+			ColumnSpacing="0"
+			HorizontalOptions="FillAndExpand"
+			RowDefinitions="Auto,*"
+			RowSpacing="0"
+			VerticalOptions="FillAndExpand">
+
+			<StackLayout BackgroundColor="Blue">
+				<Label Text="Navigation Content Goes Here - This would normally be a control bound to a view model that we configure." TextColor="White" />
+			</StackLayout>
+
+			<ContentPresenter
+				Grid.Row="1"
+				HorizontalOptions="FillAndExpand"
+				VerticalOptions="FillAndExpand" />
+		</Grid>
+
+	</ControlTemplate>
+
+</ResourceDictionary>

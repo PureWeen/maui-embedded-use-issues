@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ResourceDictionary
+	x:Class="Nau.Simple.Maui.BindingIssue.Resources.Themes.NauLightTheme"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+	<!--#region Theme Color Definitions-->
+
+	<Color x:Key="ThemePrimaryColor">#155c97</Color>
+
+
+	<Color x:Key="ThemeTextOnPrimaryColor">#ffffff</Color>
+
+	<Color x:Key="ThemeBackgroundColor">#ffffff</Color>
+
+	<Color x:Key="ThemePrimaryTextOnBackgroundColor">#97000000</Color>
+
+	<!--#endregion Theme Color Definitions-->
+
+</ResourceDictionary>

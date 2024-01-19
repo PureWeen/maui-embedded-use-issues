@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+	This is the resource dictionary providing core styles used throughout the application.
+-->
+<ResourceDictionary
+	x:Class="Nau.Simple.Maui.BindingIssue.Resources.Styles.CoreStyleDictionary"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:templates="clr-namespace:Nau.Simple.Maui.BindingIssue.Resources.Templates">
+
+	<ResourceDictionary.MergedDictionaries>
+		<templates:NavigationBarPageTemplate />
+	</ResourceDictionary.MergedDictionaries>
+
+
+	<!--#region Spacing Value Definitions-->
+
+	<x:Double x:Key="NoSpacing">0</x:Double>
+	<x:Double x:Key="ThinSpacing">1</x:Double>
+	<x:Double x:Key="MinimalSpacing">5</x:Double>
+	<x:Double x:Key="DefaultSpacing">10</x:Double>
+	<x:Double x:Key="MoreGenerousSpacing">15</x:Double>
+
+	<!-- Thickness to use for margin or padding as default for controls\element layouts on a page. -->
+	<Thickness
+		x:Key="DefaultControlMargin"
+		Bottom="{StaticResource DefaultSpacing}"
+		Left="{StaticResource MoreGenerousSpacing}"
+		Right="{StaticResource MinimalSpacing}"
+		Top="{StaticResource DefaultSpacing}" />
+
+
+
+	<!-- Implicit Content Page Style -->
+	<Style ApplyToDerivedTypes="True" TargetType="ContentPage">
+		<Setter Property="BackgroundColor" Value="{DynamicResource ThemeBackgroundColor}" />
+		<Setter Property="ControlTemplate" Value="{StaticResource NavigationBarAndContentPageTemplate}" />
+	</Style>
+
+
+	<!-- Base Label Style -->
+	<Style x:Key="LabelBaseStyle" TargetType="Label">
+		<Setter Property="FontSize" Value="18" />
+		<Setter Property="TextColor" Value="{DynamicResource ThemePrimaryTextOnBackgroundColor}" />
+		<Setter Property="LineBreakMode" Value="WordWrap" />
+	</Style>
+
+	<!-- Implicit Label Style -->
+	<Style BasedOn="{StaticResource LabelBaseStyle}" TargetType="Label" />
+
+
+	<!-- Label for text displayed as "sub detail", basically additional text that should be smaller than the main detail text displayed. -->
+	<Style
+		x:Key="SubDetailLabelStyle"
+		BasedOn="{StaticResource LabelBaseStyle}"
+		TargetType="Label">
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="TextColor" Value="{DynamicResource ThemePrimaryColor}" />
+	</Style>
+
+	<Style
+		x:Key="ButtonLabelStyle"
+		BasedOn="{StaticResource LabelBaseStyle}"
+		TargetType="Label">
+		<Setter Property="VerticalTextAlignment" Value="Center" />
+		<Setter Property="Margin" Value="{StaticResource DefaultControlMargin}" />
+		<Setter Property="TextColor" Value="{DynamicResource ThemeTextOnPrimaryColor}" />
+		<Setter Property="BackgroundColor" Value="{DynamicResource ThemePrimaryColor}" />
+	</Style>
+
+</ResourceDictionary>
