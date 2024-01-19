@@ -6,6 +6,7 @@
 * [Simple MAUI Embedded](#simple-maui-embedded)
 * [Simple Android Embedded](#simple-android-embedded)
 * [Simple MAUI StaticResource Fail](#simple-maui-staticresource-fail)
+* [Simple MAUI Binding Issue](#simple-maui-binding-issue)
 * [Simple MAUI Core](#simple-maui-core)
 
 ## Overview
@@ -73,6 +74,17 @@ The issues only appear to impact iOS. Android is included simply to illustrate i
 There are two issues we've encountered that this repros:
 1. In iOS, if a page contains a list with a data template, and the template contains an element (such as a label) that references a static resource (such as for a style), then the page will crash saying it cannot find the static resource if it's the first page loaded. If the page however is navigated to from a different MAUI page that loaded OK, then we do not see the crash. Also, if one uses DynamicResource instead of StaticResource it seems to load fine as the first page and does not crash.
 2. In iOS, sometimes (it can be sporadic but almost always seems to happen when going from the first loaded page to the second) the resource dictionaries that were added as merged resources at the application level seem to be lost and we get an error when trying to access a keyed resource.
+
+## Simple MAUI Binding Issue
+
+The `simple-maui-binding-issue` directory contains the solution illustrating a repro of a truly odd bug impacting embedded MAUI in iOS when using a ControlTemplate applied to all the MAUI pages, such as for ensuring every page displays a custom navigation bar.
+
+The bug is none of the bindings on the content page loaded in the content presenter of the template work the first time we navigate from one MAUI page to the next if any kind of modal controller was displayed in iOS first (alert, action sheet, etc.).
+
+So take the navigation pattern of Native iOS Controller -> Maui Page One -> Maui Page Two. Now, presume that before navigating to Maui Page One an alert was displayed communicating we were loading some data before navigating.
+In this scenario, the bindings on MAUI Page One work OK. When then navigating to MAUI Page Two, none of the bindings will work on MAUI Page Two - no data is displayed, no commands work on tap, etc.
+If we navigate back to Maui Page One and then to Maui Page Two, then all the bindings work fine and we see the data on the page we would expect. This ONLY happens on that first navigation to MAUI Page Two and ONLY if some form of 
+Modal Dialog controller was displayed first on the Native iOS controller.
 
 ## Simple MAUI Core
 
