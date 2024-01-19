@@ -1,9 +1,11 @@
 ## Table of Contents
 
 * [Overview](#overview)
+* [Disclaimer](#disclaimer)
 * [Simple MAUI First App](#simple-maui-first-app)
 * [Simple MAUI Embedded](#simple-maui-embedded)
 * [Simple Android Embedded](#simple-android-embedded)
+* [Simple MAUI StaticResource Fail](#simple-maui-staticresource-fail)
 * [Simple MAUI Core](#simple-maui-core)
 
 ## Overview
@@ -22,6 +24,16 @@ While attempting to migrate to MAUI and .NET 7, our structure remains the same:
 * Our separate project for iOS has been updated to .NET7 iOS and has a dependency on the shared MAUI project.
 
 We do not and cannot at this time use the single project approach where the Android and iOS specific code all resides in one project under Platforms.
+
+## Disclaimer ##
+
+All of the code in this repo is VERY much quick trash to simply provide quick code examples that reproduce the various MAUI bugs we're encountering so we can file bugs.
+Some of the examples use view models along with the pages, others simply bind to the page code behind. In some cases we've copied over relevant portions of our production code in whole or in part
+to set up any framework level stuff (navigation, initializations, etc.) but it is no means complete or necessarily clean. I have not bothered with XML Doc either.
+
+None of this is meant to reflect actual production ready code nor illustrate proper use\patterns\etc. As such, the contents of this repo should not be considered a reflection of how I actually write code! I'd never in a million years put this junk into production!
+
+With that out of the way, carry on...
 
 ## Simple MAUI First App
 
@@ -47,9 +59,24 @@ The `simple-android-embedded` directory contains the solution for running a nati
 
 This supports the same actions as 'simple-maui-embedded' but will show that trying to use a grouped list throws an exception in Android outside of the signle project structure.
 
+## Simple MAUI StaticResource Fail
+
+The `simple-maui-staticresource-fail` directory contains the solution for running a native .NET Android or .NET iOS application with embedded MAUI to illustrate some of the odd and sporadic issues that crash the app when
+trying to access a StaticResource in a global merged resource dictionary.
+
+This app is the single project structure for simplicity, but our actual production application is comprised of individual .NET Android and .NET iOS projects referencing a shared MAUI library and we see the same issues there. 
+
+The issues only appear to impact iOS. Android is included simply to illustrate it runs with no issues.
+
+**IMPORTANT:** When running the iOS application in debugging, you will need to stop and restart the application when trying the different options as the crashing issues ONLY occur if that page is the first MAUI page loaded. If a different MAUI page has loaded first, then the issues do not seem to occur, for the most part.
+
+There are two issues we've encountered that this repros:
+1. In iOS, if a page contains a list with a data template, and the template contains an element (such as a label) that references a static resource (such as for a style), then the page will crash saying it cannot find the static resource if it's the first page loaded. If the page however is navigated to from a different MAUI page that loaded OK, then we do not see the crash. Also, if one uses DynamicResource instead of StaticResource it seems to load fine as the first page and does not crash.
+2. In iOS, sometimes (it can be sporadic but almost always seems to happen when going from the first loaded page to the second) the resource dictionaries that were added as merged resources at the application level seem to be lost and we get an error when trying to access a keyed resource.
+
 ## Simple MAUI Core
 
-The `simple-maui-core` directory contains just a simple project to house all the MAUI pages, view models, etc. so they could be shared between the single project embedded example and the sepatate .NET Android example.
+The `simple-maui-core` directory contains just a simple project to house all the MAUI pages, view models, etc. so they could be shared between the single project embedded example and the separate .NET Android example.
 This is in line with our real world use of a shared project for the MAUI code to be referenced by the individual Android and iOS projects.
 
 
