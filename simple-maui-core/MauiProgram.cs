@@ -9,13 +9,19 @@ namespace Nau.Simple.Maui.Core
 		public static MauiApp CreateMauiApp(Action<MauiAppBuilder> additional = null)
 		{
 			var builder = MauiApp.CreateBuilder();
+
 			builder
 				.UseMauiEmbedding<Application>()
+				.ConfigureAppearingDisappearingEvents()
 				.UseMauiCommunityToolkit()
 				.UseMauiCompatibility();
 
+			builder.Services.AddScoped(typeof(Window), (s) => new Window() { Parent = Application.Current });
+
 			additional?.Invoke(builder);
-			return builder.Build();
+			var mauiApp =  builder.Build();
+			
+			return mauiApp;
 		}
 	}
 }

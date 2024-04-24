@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net7.0-android;net7.0-ios</TargetFrameworks>
+    <TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
     <LangVersion>11</LangVersion>
     <OutputType>Library</OutputType>
     <RootNamespace>Nau.Simple.Maui.Core</RootNamespace>
@@ -10,8 +10,8 @@
     <UseMauiEssentials>true</UseMauiEssentials>
     <Nullable>disable</Nullable>
 
-    <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-android'">26</SupportedOSPlatformVersion>
-    <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-ios'">14.2</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net8.0-android'">26</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net8.0-ios'">14.2</SupportedOSPlatformVersion>
   </PropertyGroup>
 
   <ItemGroup>
