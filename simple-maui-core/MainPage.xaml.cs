@@ -41,6 +41,11 @@
 			// Note: this will never be hit with the embedded use case of MAUI.
 			System.Console.WriteLine("*** Disappearing ***");
 		}
-	}
+
+        protected override void OnParentSet()
+        {
+            base.OnParentSet();
+        }
+    }
 
 }

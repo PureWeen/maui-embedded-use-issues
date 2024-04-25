@@ -73,9 +73,15 @@ namespace Nau.Simple.Maui.Core
                 {
                     (info.VirtualView as ContentPage).Parent = info.MauiContext.Services.GetRequiredService<Window>();
                     var vc = new CustomPageViewController(info.VirtualView, info.MauiContext);
-                   (info.VirtualView.Handler as PageHandler).ViewController = new CustomPageViewController(info.VirtualView, info.MauiContext);
+                    (info.VirtualView.Handler as PageHandler).ViewController = vc;
 
-                    return (Microsoft.Maui.Platform.ContentView)vc.View;
+                    if (vc is PageViewController pc && pc.CurrentPlatformView is Microsoft.Maui.Platform.ContentView pv)
+				        return pv;
+
+			        if (vc.View is Microsoft.Maui.Platform.ContentView cv)
+				        return cv;
+
+                    throw new InvalidOperationException($"PageViewController.View must be a {nameof(Microsoft.Maui.Platform.ContentView)}");
                 };
                
             });
